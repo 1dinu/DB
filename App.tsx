@@ -1,13 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Home from './components/Home';
-import Products from './components/Products';
-import Gallery from './components/Gallery';
-import Contact from './components/Contact';
-import QuotationWizard from './components/QuotationWizard';
-import { Page } from './types';
+import Header from './components/Header.tsx';
+import Footer from './components/Footer.tsx';
+import Home from './components/Home.tsx';
+import Products from './components/Products.tsx';
+import Gallery from './components/Gallery.tsx';
+import Contact from './components/Contact.tsx';
+import QuotationWizard from './components/QuotationWizard.tsx';
+import { Page } from './types.ts';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<Page>('home');

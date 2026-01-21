@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { generateMenuSuggestion } from '../services/geminiService';
+import { generateMenuSuggestion } from '../services/geminiService.ts';
 
 const QuotationWizard: React.FC = () => {
   const [step, setStep] = useState(1);

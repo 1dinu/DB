@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { PRODUCTS } from '../constants.tsx';
-import { Product } from '../types';
+import { Product } from '../types.ts';
 
 const Products: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'sweet' | 'savory' | 'dessert'>('all');
