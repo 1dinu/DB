@@ -1,52 +1,57 @@
 
 import React from 'react';
+import Logo from './Logo.tsx';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-blue-950 text-blue-100 py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-          <div>
-            <h3 className="text-white text-xl font-serif font-bold mb-4 tracking-wider">DROSELLE BAKES</h3>
-            <p className="text-blue-200/80 max-w-xs">
-              Redefining Sri Lankan traditional flavors with a modern twist. Perfect for your celebrations and corporate events.
+    <footer className="max-w-7xl mx-auto px-4 pb-8">
+      <div className="bg-blue-950 rounded-[4rem] text-white p-12 md:p-20 relative overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 relative z-10">
+          <div className="space-y-6">
+            <Logo light className="h-12" />
+            <p className="text-blue-100/40 text-sm leading-relaxed max-w-xs">
+              Hand-crafted Sri Lankan traditional foods presented in a contemporary style for all your celebrations.
             </p>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
+            <h4 className="text-lg font-bold mb-6">Explore</h4>
+            <ul className="space-y-3 text-blue-100/60 text-sm font-medium">
               <li><a href="#home" className="hover:text-blue-400 transition-colors">Home</a></li>
-              <li><a href="#products" className="hover:text-blue-400 transition-colors">Products</a></li>
+              <li><a href="#products" className="hover:text-blue-400 transition-colors">Menu</a></li>
               <li><a href="#gallery" className="hover:text-blue-400 transition-colors">Gallery</a></li>
-              <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact Us</a></li>
+              <li><a href="#contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="text-white font-semibold mb-4">Contact Info</h4>
-            <ul className="space-y-3 text-blue-200/80">
-              <li className="flex items-start">
-                <span className="mr-2">📍</span>
-                No. 12, Homagama
+            <h4 className="text-lg font-bold mb-6">Reach Out</h4>
+            <ul className="space-y-4 text-blue-100/60 text-sm">
+              <li className="flex items-start gap-3">
+                <span className="w-8 h-8 rounded-xl bg-blue-900 flex items-center justify-center text-blue-400">📍</span>
+                <span>No. 12, Homagama, Sri Lanka</span>
               </li>
-              <li className="flex items-center">
-                <span className="mr-2">📞</span>
-                077 790 5840
+              <li className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-xl bg-blue-900 flex items-center justify-center text-blue-400">📞</span>
+                <span>077 790 5840</span>
               </li>
-              <li className="flex items-center">
-                <span className="mr-2">✉️</span>
-                info@dd.com
+              <li className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-xl bg-blue-900 flex items-center justify-center text-blue-400">✉️</span>
+                <span>info@dd.com</span>
               </li>
             </ul>
           </div>
         </div>
-        <div className="border-t border-blue-900 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-blue-400/60">
-          <p>© {new Date().getFullYear()} Droselle Bakes. All rights reserved.</p>
-          <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="hover:text-white transition-colors">Facebook</a>
-            <a href="#" className="hover:text-white transition-colors">Instagram</a>
-            <a href="#" className="hover:text-white transition-colors">WhatsApp</a>
+        
+        <div className="border-t border-white/5 mt-16 pt-8 flex flex-col md:flex-row justify-between items-center text-xs font-bold text-blue-100/20 tracking-widest uppercase relative z-10">
+          <p>© {new Date().getFullYear()} Droselle Bakes. Crafting with Love.</p>
+          <div className="flex space-x-8 mt-6 md:mt-0">
+            <a href="#" className="hover:text-white transition-colors">IG</a>
+            <a href="#" className="hover:text-white transition-colors">FB</a>
+            <a href="#" className="hover:text-white transition-colors">WA</a>
           </div>
         </div>
+        
+        {/* Decorative corner blur */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-900 rounded-full blur-[100px] opacity-20 -mr-32 -mt-32"></div>
       </div>
     </footer>
   );

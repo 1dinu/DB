@@ -21,21 +21,25 @@ const QuotationWizard: React.FC = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-16">
-      <div className="bg-white rounded-[2.5rem] shadow-2xl p-8 md:p-12 border border-blue-50">
+    <div className="max-w-4xl mx-auto px-4 py-24">
+      <div className="bg-white rounded-[4rem] p-8 md:p-16 custom-shadow border border-blue-50 relative overflow-hidden">
+        {/* Soft decorative background circles */}
+        <div className="absolute -top-24 -left-24 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-60"></div>
+        <div className="absolute -bottom-24 -right-24 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-60"></div>
+
         {step === 1 ? (
-          <div className="space-y-8">
-            <div className="text-center">
-              <span className="bg-blue-50 text-blue-900 px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-4 inline-block">Smart Assistant</span>
-              <h1 className="text-4xl font-serif font-bold text-blue-950 mb-4">Plan Your Celebration</h1>
-              <p className="text-slate-600">Our AI assistant will help you curate the perfect menu for your event.</p>
+          <div className="relative z-10 space-y-12">
+            <div className="text-center space-y-4">
+              <span className="bg-blue-600 text-white px-5 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-[0.2em] shadow-lg shadow-blue-600/20">AI Assistant</span>
+              <h1 className="text-4xl md:text-5xl font-bold text-blue-950">Plan Your <span className="text-blue-600">Celebration</span></h1>
+              <p className="text-slate-500 font-medium">Curate a menu that perfectly fits your event's theme and guest needs.</p>
             </div>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="space-y-4">
-                <label className="block text-sm font-semibold text-slate-700">Event Type</label>
+              <div className="space-y-3">
+                <label className="text-sm font-bold text-slate-700 ml-2">What's the occasion?</label>
                 <select 
-                  className="w-full px-5 py-4 rounded-xl border border-slate-200 bg-slate-50 outline-none focus:border-blue-600"
+                  className="w-full px-6 py-4 rounded-[1.5rem] border-none bg-slate-50 focus:ring-2 focus:ring-blue-600 outline-none font-medium transition-all"
                   value={formData.eventType}
                   onChange={e => setFormData({...formData, eventType: e.target.value})}
                 >
@@ -46,22 +50,22 @@ const QuotationWizard: React.FC = () => {
                   <option>Traditional Function</option>
                 </select>
               </div>
-              <div className="space-y-4">
-                <label className="block text-sm font-semibold text-slate-700">Approx. Guests</label>
+              <div className="space-y-3">
+                <label className="text-sm font-bold text-slate-700 ml-2">Number of Guests</label>
                 <input 
                   type="number" 
-                  className="w-full px-5 py-4 rounded-xl border border-slate-200 bg-slate-50 outline-none focus:border-blue-600"
+                  className="w-full px-6 py-4 rounded-[1.5rem] border-none bg-slate-50 focus:ring-2 focus:ring-blue-600 outline-none font-medium transition-all"
                   value={formData.guestCount}
                   onChange={e => setFormData({...formData, guestCount: parseInt(e.target.value)})}
                 />
               </div>
             </div>
 
-            <div className="space-y-4">
-              <label className="block text-sm font-semibold text-slate-700">Specific Requirements or Taste Preferences</label>
+            <div className="space-y-3">
+              <label className="text-sm font-bold text-slate-700 ml-2">Any special requests? (Spicy, Low Sugar, etc.)</label>
               <textarea 
-                placeholder="e.g., Spicy savories, kid-friendly options, or low-sugar desserts..."
-                className="w-full px-5 py-4 rounded-xl border border-slate-200 bg-slate-50 outline-none focus:border-blue-600 min-h-[120px]"
+                placeholder="Tell us what you crave..."
+                className="w-full px-6 py-4 rounded-[2rem] border-none bg-slate-50 focus:ring-2 focus:ring-blue-600 outline-none min-h-[150px] font-medium transition-all"
                 value={formData.preferences}
                 onChange={e => setFormData({...formData, preferences: e.target.value})}
               />
@@ -70,15 +74,12 @@ const QuotationWizard: React.FC = () => {
             <button 
               onClick={handleSuggest}
               disabled={loading}
-              className="w-full bg-blue-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-blue-800 transition-all flex justify-center items-center gap-3 shadow-xl shadow-blue-900/20"
+              className="w-full bg-blue-950 text-white py-5 rounded-[2rem] font-bold text-lg hover:bg-blue-900 transition-all shadow-2xl active:scale-[0.98] flex items-center justify-center gap-3"
             >
               {loading ? (
                 <>
-                  <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  Curating Your Menu...
+                  <svg className="animate-spin h-5 w-5 text-white" fill="none" viewBox="0 0 24 24"><circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle><path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+                  Crafting Your Menu...
                 </>
               ) : (
                 'Generate Personalized Suggestion'
@@ -86,52 +87,52 @@ const QuotationWizard: React.FC = () => {
             </button>
           </div>
         ) : (
-          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <div className="flex justify-between items-center mb-6">
+          <div className="relative z-10 space-y-12 animate-in fade-in slide-in-from-bottom-8 duration-700">
+            <div className="flex justify-between items-center">
               <button 
                 onClick={() => setStep(1)}
-                className="text-blue-900 font-semibold flex items-center gap-2 hover:opacity-70"
+                className="text-blue-600 font-bold flex items-center gap-2 hover:opacity-70 px-4 py-2 rounded-full bg-blue-50"
               >
-                ← Back to Edit
+                ← Edit Choices
               </button>
-              <span className="text-slate-400 text-sm">Suggestion generated by Droselle AI</span>
+              <span className="text-slate-400 text-xs font-bold uppercase tracking-widest">Result</span>
             </div>
 
             {aiSuggestion && (
-              <div className="space-y-10">
-                <div className="text-center">
-                  <h2 className="text-3xl font-serif font-bold text-blue-950 mb-4">Your Custom Celebration Menu</h2>
-                  <p className="text-slate-600 leading-relaxed italic">"{aiSuggestion.introduction}"</p>
+              <div className="space-y-12">
+                <div className="text-center space-y-4">
+                  <h2 className="text-3xl md:text-4xl font-bold text-blue-950">Your Curated <span className="text-blue-600">Menu</span></h2>
+                  <p className="text-slate-500 italic text-lg leading-relaxed">"{aiSuggestion.introduction}"</p>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-6">
                   {aiSuggestion.menuItems.map((item: any, i: number) => (
-                    <div key={i} className="p-6 bg-blue-50/30 rounded-2xl border border-blue-50 hover:border-blue-200 transition-colors">
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-blue-700 mb-2 block">{item.category}</span>
-                      <h4 className="font-bold text-blue-900 text-lg mb-2">{item.name}</h4>
-                      <p className="text-sm text-slate-600 leading-relaxed">{item.description}</p>
+                    <div key={i} className="p-8 bg-slate-50 rounded-[2.5rem] border border-slate-100 hover:border-blue-200 transition-all hover:bg-white hover:shadow-xl group">
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-blue-600 mb-3 block">{item.category}</span>
+                      <h4 className="font-bold text-blue-950 text-xl mb-3 group-hover:text-blue-600 transition-colors">{item.name}</h4>
+                      <p className="text-sm text-slate-500 leading-relaxed font-medium">{item.description}</p>
                     </div>
                   ))}
                 </div>
 
-                <div className="bg-blue-50 p-6 rounded-2xl border border-blue-100">
-                  <p className="text-blue-900 text-sm font-medium text-center">
+                <div className="bg-blue-600/5 p-8 rounded-[2.5rem] border border-blue-600/10 text-center">
+                  <p className="text-blue-900 font-bold leading-relaxed">
                     {aiSuggestion.closingNote}
                   </p>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-4 pt-6 border-t border-slate-100">
+                <div className="flex flex-col sm:flex-row gap-4 pt-8">
                   <button 
-                    onClick={() => alert('Quotation request sent! Our team will contact you soon.')}
-                    className="flex-1 bg-blue-900 text-white py-4 rounded-xl font-bold hover:bg-blue-800 transition-all shadow-lg shadow-blue-900/10"
+                    onClick={() => alert('Quotation request sent!')}
+                    className="flex-1 bg-blue-950 text-white py-5 rounded-[2rem] font-bold shadow-2xl hover:bg-blue-900 transition-all active:scale-95"
                   >
-                    Request Official Quotation
+                    Request Official Quote
                   </button>
                   <button 
                     onClick={() => window.print()}
-                    className="flex-1 bg-white text-slate-600 border border-slate-200 py-4 rounded-xl font-bold hover:bg-slate-50 transition-all"
+                    className="flex-1 bg-white text-slate-600 border border-slate-200 py-5 rounded-[2rem] font-bold hover:bg-slate-50 transition-all"
                   >
-                    Download Menu PDF
+                    Download as PDF
                   </button>
                 </div>
               </div>
