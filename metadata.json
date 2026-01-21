@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Droselle Bakes",
+  "description": "A modern, elegant website for Droselle Bakes, a bakery specializing in Sri Lankan traditional foods with a modern twist. Includes an AI-powered celebration menu planner.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

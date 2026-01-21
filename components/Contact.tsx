@@ -1,0 +1,130 @@
+
+import React, { useState } from 'react';
+
+const Contact: React.FC = () => {
+  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setSubmitted(true);
+    // In a real app, send data to backend
+    setTimeout(() => {
+      setSubmitted(false);
+      setFormState({ name: '', email: '', subject: '', message: '' });
+    }, 3000);
+  };
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-16">
+      <div className="grid lg:grid-cols-2 gap-16">
+        <div>
+          <h1 className="text-5xl font-serif font-bold text-blue-950 mb-8">Get in Touch</h1>
+          <p className="text-xl text-slate-600 mb-12 leading-relaxed">
+            Have a question about our products or want to discuss a customized order? We'd love to hear from you.
+          </p>
+
+          <div className="space-y-8">
+            <div className="flex items-start gap-4">
+              <div className="bg-blue-50 p-4 rounded-2xl text-blue-900 text-2xl">📍</div>
+              <div>
+                <h4 className="font-bold text-blue-950">Visit Us</h4>
+                <p className="text-slate-600">No. 12, Homagama, Sri Lanka</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="bg-blue-50 p-4 rounded-2xl text-blue-900 text-2xl">📞</div>
+              <div>
+                <h4 className="font-bold text-blue-950">Call Us</h4>
+                <p className="text-slate-600">077 790 5840</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4">
+              <div className="bg-blue-50 p-4 rounded-2xl text-blue-900 text-2xl">✉️</div>
+              <div>
+                <h4 className="font-bold text-blue-950">Email Us</h4>
+                <p className="text-slate-600">info@dd.com</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 p-8 bg-blue-50/50 rounded-3xl border border-blue-100">
+            <h4 className="font-bold text-blue-950 mb-2">Business Hours</h4>
+            <ul className="space-y-1 text-slate-600 text-sm">
+              <li className="flex justify-between"><span>Mon - Fri:</span> <span>9:00 AM - 6:00 PM</span></li>
+              <li className="flex justify-between"><span>Saturday:</span> <span>9:00 AM - 4:00 PM</span></li>
+              <li className="flex justify-between"><span>Sunday:</span> <span>Closed</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="bg-white p-10 rounded-[2.5rem] shadow-2xl shadow-blue-900/5 border border-blue-50">
+          {submitted ? (
+            <div className="h-full flex flex-col items-center justify-center text-center space-y-4">
+              <div className="w-20 h-20 bg-green-50 rounded-full flex items-center justify-center text-green-600 text-4xl">✓</div>
+              <h3 className="text-2xl font-serif font-bold text-blue-950">Message Sent!</h3>
+              <p className="text-slate-600">Thank you for reaching out. We'll get back to you shortly.</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid sm:grid-cols-2 gap-6">
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">Your Name</label>
+                  <input 
+                    required
+                    type="text" 
+                    className="w-full px-5 py-3 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
+                    placeholder="John Doe"
+                    value={formState.name}
+                    onChange={e => setFormState({...formState, name: e.target.value})}
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
+                  <input 
+                    required
+                    type="email" 
+                    className="w-full px-5 py-3 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
+                    placeholder="john@example.com"
+                    value={formState.email}
+                    onChange={e => setFormState({...formState, email: e.target.value})}
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Subject</label>
+                <input 
+                  required
+                  type="text" 
+                  className="w-full px-5 py-3 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
+                  placeholder="Order Inquiry"
+                  value={formState.subject}
+                  onChange={e => setFormState({...formState, subject: e.target.value})}
+                />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 mb-2">Your Message</label>
+                <textarea 
+                  required
+                  rows={5}
+                  className="w-full px-5 py-3 rounded-xl border border-slate-200 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none transition-all"
+                  placeholder="Tell us about your requirements..."
+                  value={formState.message}
+                  onChange={e => setFormState({...formState, message: e.target.value})}
+                ></textarea>
+              </div>
+              <button 
+                type="submit"
+                className="w-full bg-blue-900 text-white py-4 rounded-xl font-bold text-lg hover:bg-blue-800 transition-all shadow-lg shadow-blue-900/10"
+              >
+                Send Message
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Contact;
